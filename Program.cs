@@ -55,6 +55,11 @@ namespace msykGetFILE
                 {
                     if (summary.Key.EndsWith(".pdf") || summary.Key.EndsWith(".PDF"))
                     {
+                                if(summary.Size> 12582912)
+                                {
+                                    Console.WriteLine("跳過下載:" + summary.Key);
+                                    break;
+                                }
                         Console.WriteLine("開始下載:"+summary.Key);
                             try { 
                             var obj = client.GetObject("msyk", summary.Key);
